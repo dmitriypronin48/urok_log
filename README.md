@@ -41,6 +41,53 @@ systemctl restart postgresql
 ```
 psql -h 192.168.0.169 -U loguser -d logdb -W - проверка подключения к БД
 ```
+Логинимся в БД:
+```
+psql -U loguser -d logdb -h 192.168.0.169
+```
+Когда залогинились создаем таблицы:
+```
+-- Создание основной таблицы systemevents
+CREATE TABLE systemevents (
+    id SERIAL PRIMARY KEY,
+    customerid BIGINT,
+    receivedat TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    devicereportedtime TIMESTAMP WITH TIME ZONE,
+    facility SMALLINT,
+    priority SMALLINT,
+    fromhost VARCHAR(60),
+    message TEXT,
+    ntseverity INT,
+    importance INT,
+    eventsource VARCHAR(60),
+    eventuser VARCHAR(60),
+    eventcategory INT,
+    eventid INT,
+    eventbinarydata TEXT,
+    maxavailable INT,
+    currusage INT,
+    minusage INT,
+    maxusage INT,
+    infounitid INT,
+    syslogtag VARCHAR(60),
+    eventlogtype VARCHAR(60),
+    genericfilename VARCHAR(60),
+    systemid INT
+);
+
+-- Создание таблицы свойств
+CREATE TABLE systemeventsproperties (
+    id SERIAL PRIMARY KEY,
+    systemeventid INT REFERENCES systemevents(id) ON DELETE CASCADE,
+    parametername VARCHAR(255),
+    parametervalue TEXT
+);
+```
+
+через \dt проверить список таблиц
+должны быть наши таблицы
+
+
 # Установка парсера логов
 ```
 dnf install -y rsyslog-pgsql - установка парсера логов для БД
