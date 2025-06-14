@@ -254,7 +254,23 @@ sudo systemctl stop firewalld
 ```
 Далее идем в web браузер и оттуда уже делаем настройки.
 
+в /var/www/html/loganalyzer/config.php
+поменять 
+```
+$CFG['Sources']['Source1']['ID'] = 'Source1';
+$CFG['Sources']['Source1']['Name'] = 'My Syslog Source';
+$CFG['Sources']['Source1']['ViewID'] = 'SYSLOG';
+$CFG['Sources']['Source1']['SourceType'] = SOURCE_PDO;
+$CFG['Sources']['Source1']['DBTableType'] = 'monitorware';
+$CFG['Sources']['Source1']['DBType'] = 'pgsql';  ВОТ ЭТО ПОМЕНЯТЬ!!!
+$CFG['Sources']['Source1']['DBServer'] = '192.168.0.178';
+$CFG['Sources']['Source1']['DBName'] = 'logdb';
+$CFG['Sources']['Source1']['DBUser'] = 'loguser';
+$CFG['Sources']['Source1']['DBPassword'] = 'qwerty99';
+$CFG['Sources']['Source1']['DBTableName'] = 'systemevents';
+$CFG['Sources']['Source1']['DBEnableRowCounting'] = true;
 
+```
 
 
 
