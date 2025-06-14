@@ -234,8 +234,18 @@ ParamName varchar(255) NULL ,
 ParamValue text NULL
 );
 ```
-
-
+выполнить скрипт
+```
+mariadb -u root -p < /root/sql_create.sql
+```
+Выполнить настройку БД
+```
+подключиться в mariadb -u root -p
+CREATE USER 'rsyslog'@'192.168.0.169' IDENTIFIED BY 'qwerty99';
+GRANT ALL PRIVILEGES ON Syslog.* TO 'rsyslog'@'192.168.0.169';
+FLUSH PRIVILEGES;
+проверка подключения mysql -u rsyslog -p -h 192.168.0.169
+```
 
 
 
