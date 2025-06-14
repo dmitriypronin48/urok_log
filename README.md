@@ -183,9 +183,18 @@ dnf install -y mariadb-server mariadb
 Стартуем БД
 ```
 systemctl enable mariadb
-systemctl start MariaDB
+systemctl start mariadb
 ```
-
+Настройка БД
+```
+mariadb-admin -u root password qwerty99 - назначаем пароль для бд
+mysql -u root -p - заходим в бд для проверки
+```
+Для подключения БД требуется выполнить настройки nano /etc/my.cnf.d/server.cnf
+```
+[mysqld]
+bind-address = 192.168.0.169
+```
 
 
 
