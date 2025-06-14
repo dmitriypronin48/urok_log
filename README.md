@@ -135,7 +135,7 @@ logger "Test message for LogAnalyzer"
 psql -U loguser -d logdb -h 192.168.0.169 -c "SELECT * FROM systemevents ORDER BY id DESC LIMIT 1;"
 ```
 
-# Установка и настрой loganalyzer
+# Установка и настройка loganalyzer
 Установим логанализер 
 ```
 dnf install loganalyzer
@@ -144,6 +144,51 @@ dnf install loganalyzer
 ```
 ln -s /usr/share/loganalyzer/ /var/www/html/loganalyzer
 ```
+
+Настройка nano /etc/php.ini, требуется поставить
+```
+date.timezone = "Europe/Moscow"
+memory_limit = 256M
+```
+
+Настройка Балансировщика httpd, сделайть конфиг в nano /etc/httpd/conf.d/loganalyzer.conf
+```
+<VirtualHost *:80>
+    ServerName loganalizer
+    DocumentRoot /var/www/html/loganalyzer
+    <Directory /var/www/html/loganalyzer>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog /var/log/httpd/loganalyzer_error.log
+    CustomLog /var/log/httpd/loganalyzer_access.log combined
+</VirtualHost>
+```
+В /etc/httpd/conf/httpd.conf
+```
+Listen 0.0.0.0:80
+```
+Выполнить команду
+```
+systemctl enable httpd
+systemctl restart httpd
+```
+
+# Установка сопутствующей ДБ mysql для конфигрурации loganalizer
+Установка БД
+```
+dnf install -y mariadb-server mariadb
+```
+Стартуем БД
+```
+systemctl enable mariadb
+systemctl start MariaDB
+```
+
+
+
+
 
 
 
