@@ -246,6 +246,12 @@ GRANT ALL PRIVILEGES ON Syslog.* TO 'rsyslog'@'192.168.0.169';
 FLUSH PRIVILEGES;
 проверка подключения mysql -u rsyslog -p -h 192.168.0.169
 ```
+
+отключить обязательно
+```
+sudo setenforce 0
+sudo systemctl stop firewalld
+```
 Далее идем в web браузер и оттуда уже делаем настройки.
 
 
