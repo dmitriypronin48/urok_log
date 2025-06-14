@@ -1,6 +1,6 @@
 # Установка зависимостей
 ```
-dnf install -y net-tools rsyslog postgresql postgresql-server php php-pgsql php-gd php-common httpd wget unzip php-mysqlnd postgresql-contrib
+dnf install -y net-tools rsyslog postgresql postgresql-server php php-pgsql php-gd php-mbstring php-common httpd wget unzip php-mysqlnd postgresql-contrib
 ```
 
 # Работа с БД PostgreSQL
