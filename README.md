@@ -84,8 +84,7 @@ CREATE TABLE systemeventsproperties (
 );
 ```
 
-через \dt проверить список таблиц
-должны быть наши таблицы
+через \dt проверить список таблиц, должны быть наши таблицы
 
 
 # Установка парсера логов
@@ -122,8 +121,19 @@ template(name="pgsql_template" type="list" option.sql="on") {
     template="pgsql_template"
 )
 ```
+Выполнить команду
+```
+systemctl restart rsyslog
+```
 
-
+Для проверке бд сделать команду
+```
+logger "Test message for LogAnalyzer"
+```
+Проверить, что лог отправился можно командой
+```
+psql -U loguser -d logdb -h 192.168.0.169 -c "SELECT * FROM systemevents ORDER BY id DESC LIMIT 1;"
+```
 
 
 
