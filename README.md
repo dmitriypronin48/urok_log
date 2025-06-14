@@ -135,6 +135,15 @@ logger "Test message for LogAnalyzer"
 psql -U loguser -d logdb -h 192.168.0.169 -c "SELECT * FROM systemevents ORDER BY id DESC LIMIT 1;"
 ```
 
+# Установка и настрой loganalyzer
+Установим логанализер 
+```
+dnf install loganalyzer
+```
+после установки сделать ссылку
+```
+ln -s /usr/share/loganalyzer/ /var/www/html/loganalyzer
+```
 
 
 
