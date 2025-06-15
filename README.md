@@ -278,4 +278,6 @@ $CFG['Sources']['Source1']['DBEnableRowCounting'] = true;
 ```
 
 
+Разлогинить всех rm -f /var/lib/php/session/*
+
 
