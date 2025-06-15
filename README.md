@@ -258,8 +258,15 @@ FLUSH PRIVILEGES;
 ```
 
 Далее идем в web браузер и оттуда уже делаем настройки.
+```
+http://192.168.0.178/login.php
+http://192.168.0.178//index.php
+```
 
-в /var/www/html/loganalyzer/config.php
+
+
+
+Возможно потребуется, а может и нет в /var/www/html/loganalyzer/config.php
 поменять 
 ```
 $CFG['Sources']['Source1']['ID'] = 'Source1';
