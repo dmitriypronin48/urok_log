@@ -2,6 +2,16 @@
 ```
 dnf install -y net-tools rsyslog postgresql postgresql-server php php-pgsql php-gd php-mbstring php-common httpd wget unzip php-mysqlnd postgresql-contrib
 ```
+отключить обязательно в nano /etc/selinux/config выключить selinux
+```
+SELINUX=permissive
+```
+отключить обязательно
+```
+sudo systemctl stop firewalld
+```
+
+
 
 # Работа с БД PostgreSQL
 ```
@@ -247,11 +257,6 @@ FLUSH PRIVILEGES;
 проверка подключения mysql -u rsyslog -p -h 192.168.0.169
 ```
 
-отключить обязательно
-```
-sudo setenforce 0
-sudo systemctl stop firewalld
-```
 Далее идем в web браузер и оттуда уже делаем настройки.
 
 в /var/www/html/loganalyzer/config.php
