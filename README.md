@@ -205,6 +205,10 @@ mysql -u root -p - заходим в бд для проверки
 [mysqld]
 bind-address = 192.168.0.169
 ```
+выполнить рестарт для применения настроек
+```
+systemctl restart mariadb
+```
 Требуется создать скрипт, который создаст БД и таблицы для mariaDB. nano sql_create.sql
 ```
 CREATE DATABASE Syslog;
